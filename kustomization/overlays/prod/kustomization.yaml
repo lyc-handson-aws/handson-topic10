@@ -11,6 +11,7 @@ configMapGenerator:
   - application.properties
 patchesStrategicMerge:
   - replicas-prod.yaml
+  - set_memory.yaml
 
 vars:
 - name: config_name

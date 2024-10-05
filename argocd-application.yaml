@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hellwo-world
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/lyc-handson-aws/handson-topic10.git
+    targetRevision: HEAD
+    path: kustomization/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
