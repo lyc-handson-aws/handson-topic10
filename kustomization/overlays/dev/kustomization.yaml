@@ -1,0 +1,15 @@
+namespace: dev
+namePrefix: dev-
+commonLabels:
+  env: dev
+commonAnnotations:
+  methode: kustomize
+resources:
+  - ../../base
+
+configMapGenerator:
+- name: info-config
+  files:
+  - application.properties
+patchesStrategicMerge:
+  - replicas-dev.yaml

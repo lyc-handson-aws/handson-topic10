@@ -1,0 +1,20 @@
+namespace: prod
+namePrefix: prod-
+commonLabels:
+  env: prod
+resources:
+  - ../../base
+
+configMapGenerator:
+- name: info-config
+  files:
+  - application.properties
+patchesStrategicMerge:
+  - replicas-prod.yaml
+
+vars:
+- name: config_name
+  objref:
+    kind: ConfigMap
+    name: info-config
+    apiVersion: v1
