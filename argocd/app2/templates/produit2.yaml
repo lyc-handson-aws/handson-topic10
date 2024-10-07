@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1-product2
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: app2
+    server: {{ .Values.spec.destination.server }}
+  project: app2
+  source:
+    path: kustomization
+    repoURL: https://github.com/lyc-handson-aws/handson-topic10-product2
+    targetRevision: head
+    kustomize:
+      namePrefix: app2-
+      patches:
+        - target:
+            group: app.lyc-handson-aws.com
+            version: v1alpha1
+            kind: Deployment
+            name: TopicTen
+          patch: |-
+            - op: replace
+              path: /spec/image
+              value: alpine
+            - op: replace
+              path: /spec/replicas
+              value: 8
+            - op: replace
+              path: /spec/cloudwatcharn
+              value: zz
+            - op: replace
+              path: /spec/kmsarn
+              value: zz
+            - op: replace
+              path: /spec/targetarn
+              value: zz
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

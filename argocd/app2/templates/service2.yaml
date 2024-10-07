@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app2-service2
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: app2
+    server: {{ .Values.spec.destination.server }}
+  project: app2
+  source:
+    path: service2/xr
+    repoURL: https://github.com/lyc-handson-aws/handson-topic10-services
+    targetRevision: head
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

@@ -1,5 +1,0 @@
-commonAnnotations:
-  methode: kustomize
-resources:
-  - deployment.yaml
-  - service.yaml
