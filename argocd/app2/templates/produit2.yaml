@@ -11,8 +11,8 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: app2
   source:
-    path: kustomization
-    repoURL: https://github.com/lyc-handson-aws/handson-topic10-product2
+    path: produit2
+    repoURL: https://github.com/lyc-handson-aws/handson-topic10-product2.git
     targetRevision: head
     kustomize:
       namePrefix: app2-

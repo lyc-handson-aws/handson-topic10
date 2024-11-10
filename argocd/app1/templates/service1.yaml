@@ -12,7 +12,7 @@ spec:
   project: app1
   source:
     path: service1/xr
-    repoURL: https://github.com/lyc-handson-aws/handson-topic10-services
+    repoURL: https://github.com/lyc-handson-aws/handson-topic10-services.git
     targetRevision: head
   syncPolicy:
     syncOptions:
