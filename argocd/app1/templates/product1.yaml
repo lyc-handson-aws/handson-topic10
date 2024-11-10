@@ -9,14 +9,15 @@ spec:
   destination:
     namespace: app1
     server: {{ .Values.spec.destination.server }}
-  project: app1
+  project: produit1
   source:
     path: produit1
     repoURL: https://github.com/lyc-handson-aws/handson-topic10-product1.git
-    targetRevision: head
+    targetRevision: HEAD
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+      - Replace=true
     automated:
       prune: true
       selfHeal: true

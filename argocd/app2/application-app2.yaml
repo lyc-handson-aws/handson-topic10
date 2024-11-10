@@ -1,19 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app1-service1
+  name: app2-application
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: app1
-    server: {{ .Values.spec.destination.server }}
-  project: produit1
+    namespace: app2
+    server: https://kubernetes.default.svc
+  project: default
   source:
-    path: service1
-    repoURL: https://github.com/lyc-handson-aws/handson-topic10-services.git
+    path: argocd/app2
+    repoURL: https://github.com/lyc-handson-aws/handson-topic10.git
     targetRevision: HEAD
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
