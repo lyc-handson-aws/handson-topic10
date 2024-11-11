@@ -28,16 +28,18 @@ spec:
               value: 4
             - op: replace
               path: /spec/cloudwatcharn
-              value: zz
+              value: "arn:aws:logs:eu-west-3:654654303557:log-group:service2-topic10-loggroup:*"
             - op: replace
               path: /spec/kmsarn
-              value: zz
+              value: "arn:aws:kms:eu-west-3:654654303557:key/cf4788d3-143f-4daa-874e-e58780c7b883"
             - op: replace
               path: /spec/targetarn
-              value: zz
+              value: "arn:aws:s3:::service2-topic10-xr-sxnrz-7p7vz"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
+
+  
