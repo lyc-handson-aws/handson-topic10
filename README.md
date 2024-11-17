@@ -83,7 +83,7 @@
 
 the diagram below illustrates the architecture(principle) of this project:
 
-![](images/1-architecture.png)
+
 
 
 ## How to replicate this Topic 
