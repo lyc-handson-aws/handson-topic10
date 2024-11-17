@@ -1,0 +1,16 @@
+name: recreate an application in ArogCD
+on: 
+  workflow_dispatch:
+  
+env:
+  ARGOCD_SERVER: xxXXX
+
+# to do
+#jobs:
+#  cf:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@master
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:

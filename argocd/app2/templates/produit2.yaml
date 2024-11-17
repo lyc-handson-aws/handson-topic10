@@ -31,15 +31,12 @@ spec:
               value: "arn:aws:logs:eu-west-3:654654303557:log-group:service2-topic10-loggroup:*"
             - op: replace
               path: /spec/kmsarn
-              value: "arn:aws:kms:eu-west-3:654654303557:key/cf4788d3-143f-4daa-874e-e58780c7b883"
+              value: "arn:aws:kms:eu-west-3:654654303557:key/ede6fc6a-83d4-4100-b867-62adcf74ffec"
             - op: replace
               path: /spec/targetarn
-              value: "arn:aws:s3:::service2-topic10-xr-sxnrz-7p7vz"
+              value: "arn:aws:s3:::service2-topic10-xr-mmrzg-4tcz6"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
 
   
