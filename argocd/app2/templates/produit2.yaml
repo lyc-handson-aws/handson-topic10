@@ -31,10 +31,10 @@ spec:
               value: "arn:aws:logs:eu-west-3:654654303557:log-group:service2-topic10-loggroup:*"
             - op: replace
               path: /spec/kmsarn
-              value: "arn:aws:kms:eu-west-3:654654303557:key/ede6fc6a-83d4-4100-b867-62adcf74ffec"
+              value: "arn:aws:kms:eu-west-3:654654303557:key/c643454b-61f5-4b59-8896-d2f73d89728f"
             - op: replace
               path: /spec/targetarn
-              value: "arn:aws:s3:::service2-topic10-xr-mmrzg-4tcz6"
+              value: "arn:aws:s3:::service2-topic10-xr-pnmg7-pmdwg"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
