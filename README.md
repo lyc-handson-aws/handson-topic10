@@ -81,12 +81,18 @@
 
 ## **Architecture**
 
-the diagram below illustrates the architecture(principle) of this project:
+This diagram illustrates the architecture(principle) of this project:
+
+![image-20241113210856307](./images/1-architecture.png)
+
+This diagram illustrates Operator's controller's basic `reconcile` logic of of this project:
+
+![image-20241113210856307](./images/2-operator-controller.png)
 
 
 
+## How to replicate this Topic
 
-## How to replicate this Topic 
 1. Fork all repos inside this topic
 
 2. Run this command on the environment where there is the Kube context of your cluster to bootstrap with FluxCD
