@@ -275,6 +275,8 @@ Check the FuxCD implementation [here](https://github.com/lyc-handson-AWS/handson
 
 Check ArgoCD the AWS reousrces kube mantifest [here](https://github.com/lyc-handson-AWS/handson-topic10-services) 
 
+![image-20241114183534449](./images/argocd-interface.png)
+
 ### Project
 
 > [!CAUTION]
