@@ -18,6 +18,8 @@
 
 :point_right: Program interact with AWS Resources
 
+:point_right: API Gateway + Lambda to read securely AWS resources
+
 
 
 
@@ -42,6 +44,10 @@
 ## What could be learned in this topic:
 
 #### AWS SDK for Go
+
+:point_right:How to write a go program using/connecting/communicating with AWS resources(Cloudwatch-Loggroup/S3-Bucket/DynamoDB-Table/KMS-key)
+
+#### AWS APIGateway + Lumbda
 
 :point_right:How to write a go program using/connecting/communicating with AWS resources(Cloudwatch-Loggroup/S3-Bucket/DynamoDB-Table/KMS-key)
 
@@ -89,7 +95,9 @@ This diagram illustrates Operator's controller's basic `reconcile` logic of of t
 
 ![image-20241113210856307](./images/2-operator-controller.png)
 
+This diagram illustrates how and why there is a API Gateway and Lambda in the peoject:
 
+![image-20241116155438261](./images/api.png)
 
 ## How to replicate this Topic
 
@@ -127,7 +135,7 @@ This diagram illustrates Operator's controller's basic `reconcile` logic of of t
       make deploy
       ```
 
-4. Initiate some ArgoCD configurations
+4. lInitiate some ArgoCD configurations
 
    > [!TIP]
    >
@@ -157,9 +165,9 @@ This diagram illustrates Operator's controller's basic `reconcile` logic of of t
 
 5. you will see the applications will appear on the ArgoCD page
 
-6. For the applications "prodoct". they will be synchronized automatically.
+6. For the applications "product". they will be synchronized automatically.
 
-7. For the applications "service", synchronize them manually via ArgoCD
+7. For the applications "service", synchronize them manually via ArgoCD( product depends on  service, if it's not launched before)
 
 
 
@@ -578,3 +586,16 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o myapp .
 
 
 
+## API Gateway + Lambda
+
+### Goal
+
+this implementation aims to create an interface in front of DynamoDB  & Cloudwatch loggroup,  so inside live.html we can read securely data from these AWS resources
+
+
+
+### Key features
+
+- all related resources are created by Terraform
+- the resources for creating a method 'option' with necessary headers in response resource of Gateway is managed, otherwise the API Gateway is not accessible by browser(Chrome). because Chrome send first an 'option' request before getting a CORS resource.
+- the lambda is granted the least privilege to be able to read only DynamoDB and Cloudwatch loggroup
