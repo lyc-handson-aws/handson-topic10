@@ -1,8 +1,14 @@
 import boto3
 import os
 import json
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
+
+    logger.info(f"Test Received event: {json.dumps(event)}")
     # Boto3 clients for DynamoDB and CloudWatch Logs
     dynamodb = boto3.client('dynamodb')
     logs_client = boto3.client('logs')

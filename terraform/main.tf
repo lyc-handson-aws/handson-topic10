@@ -27,6 +27,11 @@ resource "aws_iam_role" "my_iamrole" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
+  role       = aws_iam_role.my_iamrole.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
 
 resource "aws_iam_role_policy" "my_iampolicy" {
   name = "handson-${var.topic_name}-lambda-iampolicy"
@@ -131,7 +136,31 @@ resource "aws_api_gateway_integration" "my_get_gtwintegration" {
   integration_http_method = "POST"
   type                    = "AWS"
   uri                     = aws_lambda_function.my_lambda.invoke_arn
+
+  request_templates = {
+    "application/json" = <<EOF
+{
+  "resource": "$context.resourcePath",
+  "path": "$context.path",
+  "httpMethod": "$context.httpMethod",
+  "headers": {
+    #foreach($header in $input.params().header.keySet())
+      "$header": "$util.escapeJavaScript($input.params().header.get($header))"
+    #if($foreach.hasNext),#end
+    #end
+  },
+  "queryStringParameters": {
+    #foreach($param in $input.params().querystring.keySet())
+      "$param": "$util.escapeJavaScript($input.params().querystring.get($param))"
+    #if($foreach.hasNext),#end
+    #end
+  },
+  "body": "$input.body"
 }
+EOF
+  }
+}
+
 
 
 resource "aws_api_gateway_method" "my_options_method" {
