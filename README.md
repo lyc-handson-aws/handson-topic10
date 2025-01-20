@@ -143,7 +143,7 @@ This diagram illustrates how and why there is a API Gateway and Lambda in the pe
    >
    > check the detailed procedures or commands in the ArgoCD chapter or in the repo.
 
-   1. you can first check on ArgoCD page : Settings/Project/ the 2 projects and its configurations were already there
+   1. you can first check on ArgoCD webpage that(ArgoCD service is available , see argo-init.sh(inside flux repo) to access the ArgoCD on you local server)  Settings/Project/ the 2 projects and its configurations are already there
 
    2. create local users by patching argocd-cm
 
@@ -157,7 +157,7 @@ This diagram illustrates how and why there is a API Gateway and Lambda in the pe
 
       > [!CAUTION]
       >
-      > update the repo urls to the new location for 2 applications and its sub-apps before run this command
+      > before run this command,if you are using my apps, make sure pass in advance kubeseal commands to create secrets
 
       ```bash
       argocd app create -f argocd/app1/application-app1.yaml  --upsert
